@@ -52,7 +52,8 @@ namespace TodoWebAPI
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:3000","https://localhost:3000"));
 
             app.UseHttpsRedirection();
 
