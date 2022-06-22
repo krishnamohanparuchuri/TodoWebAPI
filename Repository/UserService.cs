@@ -39,6 +39,7 @@ namespace TodoWebAPI.Repository
         public async Task<User> CreateUser(UserRegisterDetailsDto model)
         {
             _password.CreatePasswordHash(model.Password, out byte[] passwordHash, out byte[] passwordSalt);
+           
             var user = new User()
             {
                 UserName = model.UserName,
@@ -47,7 +48,7 @@ namespace TodoWebAPI.Repository
                 LastName = model.LastName,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                Role=Role.User
+                Role= Role.User,
             };
             _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
